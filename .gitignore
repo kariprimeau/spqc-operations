@@ -1,0 +1,10 @@
+node_modules/
+.wrangler/
+.dev.vars
+*.sql.out
+import-*.sql
+restore-test-*/
+# Financial source files never go in git
+*.csv
+!test/fixtures/*.csv
+*.pdf
