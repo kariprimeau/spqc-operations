@@ -1,0 +1,27 @@
+{
+  "name": "spqc-operations",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:migrate": "wrangler d1 migrations apply spqc-operations --remote",
+    "db:migrate:local": "wrangler d1 migrations apply spqc-operations --local",
+    "import": "tsx scripts/import.ts",
+    "restore-test": "tsx scripts/restore-test.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "4.20251121.0",
+    "@types/node": "^22.20.5",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3",
+    "vitest": "3.2.4",
+    "wrangler": "4.50.0"
+  }
+}

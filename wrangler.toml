@@ -1,0 +1,24 @@
+# SPQC Operations — Cloudflare Worker. See docs/SETUP.md.
+name = "spqc-operations"
+main = "src/index.ts"
+compatibility_date = "2025-11-01"
+# Reached through Cloudflare Access (on workers.dev or your own domain). The Worker also checks the Access token itself.
+workers_dev = true
+preview_urls = false
+
+[[d1_databases]]
+binding = "DB"
+database_name = "spqc-operations"
+database_id = "REPLACE_WITH_ID_FROM_wrangler_d1_create"
+migrations_dir = "migrations"
+
+[triggers]
+# 08:00 UTC = 2 AM Central (standard time) / 3 AM (daylight time)
+crons = ["0 8 * * *"]
+
+[vars]
+BACKUP_FOLDER = "_SPQC Backups"
+# Set these after creating the Access application (docs/SETUP.md, step 4):
+ACCESS_TEAM_DOMAIN = ""
+ACCESS_AUD = ""
+# Secrets (never in this file): ALLOWED_EMAIL, MS_TENANT_ID, MS_CLIENT_ID, MS_CLIENT_SECRET, TOKEN_KEY
